@@ -18,7 +18,7 @@ Grep "keyword2" in thoughts/**/*.md
 Keywords to search:
 - Main topic of the thought
 - Key entities (people, projects, technologies)
-- Domain terms
+- Domain terms (BaZi, расшифровка, бот, контент, Николаева, дашборд)
 
 ### Step 2: Check MOC Indexes
 
@@ -39,7 +39,7 @@ Find related entries.
 Check if thought relates to goals:
 
 ```
-Read goals/1-yearly-2025.md
+Read goals/1-yearly-2026.md
 Find matching goal areas
 ```
 
@@ -50,13 +50,13 @@ In the thought file, add:
 **In frontmatter:**
 ```yaml
 related:
-  - "[[thoughts/ideas/2024-12-15-voice-agents.md]]"
-  - "[[goals/1-yearly-2025#AI Development]]"
+  - "[[thoughts/ideas/2026-02-12-bazi-webinar-format.md]]"
+  - "[[goals/1-yearly-2026#Career & Business]]"
 ```
 
 **In content (inline):**
 ```markdown
-This connects to [[Voice Agents Architecture]] we explored earlier.
+This connects to [[BaZi Dashboard MVP]] we explored earlier.
 ```
 
 **In Related section:**
@@ -75,12 +75,19 @@ Add new note to appropriate MOC:
 # MOC: Ideas
 
 ## Recent
-- [[thoughts/ideas/2024-12-20-new-idea.md]] — Brief description
+- [[thoughts/ideas/2026-02-15-bazi-subscription-model.md]] — Модель подписки на BaZi-сервис
 
 ## By Topic
-### AI & Voice
-- [[thoughts/ideas/2024-12-20-new-idea.md]]
-- [[thoughts/ideas/2024-12-15-voice-agents.md]]
+### BaZi & Распаковка
+- [[thoughts/ideas/2026-02-15-bazi-subscription-model.md]]
+- [[thoughts/ideas/2026-02-12-bazi-webinar-format.md]]
+
+### AI & Инструменты
+- [[thoughts/learnings/2026-02-13-notebooklm-presentations.md]]
+- [[thoughts/ideas/2026-02-12-ai-bazi-video-idea.md]]
+
+### Контент
+- [[thoughts/ideas/2026-02-14-youtube-series-bazi.md]]
 ```
 
 ### Step 6: Add Backlinks
@@ -99,8 +106,10 @@ In related notes, add backlink to new note if highly relevant.
 
 ### Link to Goals
 ```markdown
-[[goals/1-yearly-2025#Career & Business]]
+[[goals/1-yearly-2026#Career & Business]]
+[[goals/1-yearly-2026#Financial]]
 [[goals/3-weekly]] — ONE Big Thing
+[[goals/2-monthly]] — Top 3 Priorities
 ```
 
 ## Report Section
@@ -115,36 +124,40 @@ Track new links created:
 
 ## Example Workflow
 
-<!-- Это пример — замените на свои реальные темы -->
-New thought: "Новый инструмент X можно использовать для проекта Y"
+New thought: "NotebookLM отлично делает презентации по BaZi-расшифровкам — можно использовать для платных консультаций"
 
 1. **Search:**
-   - Grep "keyword" in thoughts/ → finds related notes
-   - Grep "tool" in thoughts/ → no results
+   - Grep "NotebookLM" in thoughts/ → finds [[notebooklm-presentations]]
+   - Grep "BaZi" in thoughts/ → finds [[bazi-webinar-format]], [[bazi-dashboard-mvp]]
+   - Grep "консультаци" in thoughts/ → finds [[bazi-offer-draft]]
 
 2. **Check MOC:**
-   - MOC-learnings.md has relevant section
+   - MOC-learnings.md has section "AI & Инструменты"
+   - MOC-ideas.md has section "BaZi & Распаковка"
 
 3. **Goals:**
-   - 1-yearly-2025.md has matching goal
+   - 1-yearly-2026.md → "BaZi-направление → $1K/мес" ✅ match
+   - 2-monthly.md → Priority 2: "Заложить фундамент BaZi-бизнеса" ✅ match
 
 4. **Create links:**
    ```yaml
    related:
-     - "[[thoughts/ideas/related-note.md]]"
-     - "[[goals/1-yearly-2025#Your Goal]]"
+     - "[[thoughts/learnings/2026-02-13-notebooklm-presentations.md]]"
+     - "[[thoughts/ideas/2026-02-12-bazi-webinar-format.md]]"
+     - "[[goals/1-yearly-2026#Career & Business]]"
    ```
 
 5. **Update MOC-learnings.md:**
    ```markdown
-   ### Your Category
-   - [[thoughts/learnings/2024-12-20-new-learning.md]] — Description
+   ### AI & Инструменты
+   - [[thoughts/learnings/2026-02-15-notebooklm-bazi-consult.md]] — NotebookLM для платных BaZi-консультаций
    ```
 
 6. **Report:**
    ```
    <b>🔗 Новые связи:</b>
-   • [[New Note]] ↔ [[Related Note]]
+   • [[NotebookLM BaZi Consult]] ↔ [[BaZi Webinar Format]]
+   • [[NotebookLM BaZi Consult]] → [[Goal: BaZi-направление]]
    ```
 
 ## Orphan Detection
@@ -157,5 +170,5 @@ A note is "orphan" if:
 Flag orphans for review:
 ```
 <b>⚠️ Изолированные заметки:</b>
-• [[thoughts/ideas/orphan-note.md]]
+• [[thoughts/ideas/orphan-note.md]] — Связать или архивировать?
 ```

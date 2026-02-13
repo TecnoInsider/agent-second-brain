@@ -38,6 +38,11 @@ NO unsupported tags: div, span, br, p, table, tr, td
 <b>🎯 Текущий фокус:</b>
 {ONE_BIG_THING from goals/3-weekly.md}
 
+<b>🚦 Светофор:</b>
+🔴 {red_project}: {status}
+🟡 {yellow_project}: {status}
+🟢 {green_activities}: {status}
+
 <b>📓 Сохранено мыслей:</b> {N}
 • {emoji} {title} → {category}/
 
@@ -50,6 +55,10 @@ NO unsupported tags: div, span, br, p, table, tr, td
 <b>⚠️ Требует внимания:</b>
 • {count} просроченных задач
 • Цель "{goal}" без активности {days} дней
+
+{if bug_pattern_detected:}
+<b>🐛 Паттерн замечен:</b>
+• {pattern_description}
 
 <b>🔗 Новые связи:</b>
 • [[Note A]] ↔ [[Note B]]
@@ -71,6 +80,15 @@ NO unsupported tags: div, span, br, p, table, tr, td
 Read from goals/3-weekly.md, find "ONE Big Thing" section.
 If not found: "Не задан — обновите goals/3-weekly.md"
 
+### Traffic Light (🚦)
+Read from goals/2-monthly.md, find "Правило Светофора" section.
+Show current status of each color:
+- 🔴 Red project (e.g. Николаева) — active/waiting
+- 🟡 Yellow project (e.g. калорий-бот) — progress/blocked/done
+- 🟢 Green activities (e.g. BaZi + контент) — on track/behind
+
+If yellow project is marked DONE → celebrate and prompt: "Жёлтый проект закрыт! Что становится новым жёлтым?"
+
 ### Thoughts (📓)
 Count saved, list with category emoji:
 💡 idea, 🪞 reflection, 🎯 project, 📚 learning
@@ -85,7 +103,17 @@ Format: Пн: 4 | Вт: 2 | ...
 
 ### Attention (⚠️)
 Show only if issues exist.
-Check overdue tasks and stale goals (7+ days no activity).
+Check:
+- Overdue tasks
+- Stale goals (7+ days no activity)
+- Credit card payment dates approaching
+
+### Bug Patterns (🐛)
+Show only if detected. Check:
+- 4+ different goal areas touched today → "Растекание! Фокус на 1–2 области."
+- New project idea created while 3 active → "⛔ 4-й проект! Записано в someday."
+- Tasks created after 21:00 with new ideas → "Вечерний импульс. Проверь утром."
+- Task with vague wording ("подумать о...", "изучить") → "Конкретизируй: что именно сделать?"
 
 ### Links (🔗)
 Show only if new links created.
@@ -93,10 +121,20 @@ Format: • [[Note A]] ↔ [[Note B]]
 
 ### Priorities (⚡)
 Get tomorrow's tasks from Todoist, sort by priority, show top 3.
+Always show traffic light color next to task:
+Format: 1. 🔴 Task name <i>(goal)</i>
 
 ### Goals Progress (📈)
 Read goals/1-yearly-2026.md, show goals with recent activity.
 Emojis: 🔴 0-25%, 🟡 26-50%, 🟢 51-75%, ✅ 76-100%
+
+Current goals to track:
+- BaZi-направление → $1K/мес
+- Контент-система
+- Режим + здоровье
+- Переезд в Валенсию
+- Продажи + курсы + фокус
+- Долги → 0, доход → $3K
 
 ## Error Report
 
@@ -118,7 +156,11 @@ Emojis: 🔴 0-25%, 🟡 26-50%, 🟢 51-75%, ✅ 76-100%
 ## Length Limit
 
 Telegram max: 4096 characters.
-If exceeds: truncate "Новые связи" first, then keep only top 3 goals.
+If exceeds: truncate in this order:
+1. "Новые связи" (🔗) — remove first
+2. "Паттерн замечен" (🐛) — shorten
+3. Goals — keep only top 3 active
+4. Thoughts — keep only count, remove list
 
 ## Validation Checklist
 
